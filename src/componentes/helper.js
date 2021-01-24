@@ -15,7 +15,8 @@ export function WinningLogic(squares) {
             return {
                 winner: squares[a],
                 line: lines[i],
-                isDraw: false
+                isDraw: false,
+                gameOver: true
             }
         }
     }
@@ -28,6 +29,8 @@ export function WinningLogic(squares) {
     return {
         winner: null,
         line:null,
-        isDraw: isDraw
+        isDraw: isDraw,
+        gameOver: false
+        
     }
 }

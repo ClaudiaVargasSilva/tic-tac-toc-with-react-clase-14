@@ -13,21 +13,23 @@ function Game() {
     const [ocultar, setOcultar] = useState(false);
 
     function PrimerPlayer() {
-            setOcultar(true)
-            setPlayer1(setXNext(isXNext));
+        setOcultar(true)
+        setPlayer1(setXNext(isXNext));
     }
     function SegundoPlayer() {
-        
-            setOcultar(true)
-            setPlayer2(setXNext(!isXNext));
-       
+
+        setOcultar(true)
+        setPlayer2(setXNext(!isXNext));
+
     }
 
     const winningInfo = WinningLogic(squares);
     const winner = winningInfo.winner;
+    const isGameOver = winningInfo.gameOver;
 
     const winnerHighlight = winningInfo.line;
     let status;
+
     if (winner) {
         status = "The Winner is " + winner;
     }
@@ -42,10 +44,23 @@ function Game() {
         return (
             <Square
                 onClick={() => {
-                    const nextSquare = squares.slice();
-                    nextSquare[i] = isXNext ? "X" : "O";
-                    setXNext(!isXNext);
-                    setSquare(nextSquare);
+                    if (isGameOver === false) {
+
+                        if(squares[i] === null){
+                            const nextSquare = squares.slice();
+                            nextSquare[i] = isXNext ? "X" : "O";
+                            setSquare(nextSquare);
+                            setXNext(!isXNext);
+                            
+                            
+
+                        } else {
+                            alert("invalid")}
+        
+                    } else {
+                        alert("The Game is Over")
+                    }
+
                 }}
                 value={squares[i]}
                 highlightWinner={winnerHighlight && winnerHighlight.includes(i)}

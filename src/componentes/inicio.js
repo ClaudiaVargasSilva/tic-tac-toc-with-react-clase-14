@@ -8,7 +8,6 @@ const Inicio = (props) => {
         player2: " ",
     });
     //const [isActive, setIsActive] = useState(false)
-
     const handleChange = e => {
         setState({
             ...state, //misma funcion para todos los campos
@@ -17,7 +16,6 @@ const Inicio = (props) => {
     }
     /*const handleClick = e => {
         setIsActive(!isActive);
-
     onChange={handleChange}
     }*/
     const [state, setState] = useState({
@@ -27,7 +25,6 @@ const Inicio = (props) => {
     const [primero, setPrimero] = useState("")
 
     const handleChange = e => {
-
         setState({
             ...state, //misma funcion para todos los campos
             [e.target.name]: e.target.value //escribir en el texto que corresponde //name//
@@ -35,7 +32,7 @@ const Inicio = (props) => {
     }
     const handleClick = e => {
         if (state.player1 !== "" && state.player2 !== "") {
-            if (e.target.className == "btn btn1") {
+            if (e.target.className == "btn btn1" || e.target.className === "fas fa-times") {
                 console.log("hola")
                 props.startPlayer1()
             } else {
@@ -59,8 +56,8 @@ const Inicio = (props) => {
                     </div>
                 </div>
                 <div className="button row">
-                    <button className="btn btn1" onClick={(e) => handleClick(e)}><i className="fas fa-times" ></i></button>
-                    <button className="btn btn2" onClick={(e) => handleClick(e)}><i className="far fa-circle" ></i></button>
+                    <button className="btn btn1" onClick={(e) => handleClick(e)}><i className="fas fa-times" onClick={(e) => handleClick(e)}></i></button>
+                    <button className="btn btn2" onClick={(e) => handleClick(e)}><i className="far fa-circle"onClick={(e) => handleClick(e)}></i></button>
                 </div>
             </div>
         </>
